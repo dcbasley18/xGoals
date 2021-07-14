@@ -25,7 +25,7 @@ shots_19 <- read.csv("shots_2019.csv")
 set.seed(100)
 
 
-n <- 100
+n <- 200 # number of bootstrap samples
 
 
 
@@ -37,7 +37,7 @@ for (a in 1:n){
 
 }  
   
-  
+
 
 for (b in 1:n){
   samp_11 <- shots_11[sample(nrow(shots_11), size=108753, replace = TRUE), ]
@@ -279,7 +279,11 @@ trends <- rbind(samp_10_error, samp_11_error, samp_12_error,
 
 data <- data.frame(angle_c = c(angle_10,angle_11, angle_12, angle_13, angle_14, angle_15, angle_16, angle_17, angle_18 ,angle_19),                    # Create data frame 
                    distance_c = c(distance_10, distance_11, distance_12, distance_13, distance_14, distance_15, distance_16, distance_17, distance_18, distance_19),
-                   seasons = c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019))
+                   seasons = c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019),
+                   std_error = c(std_err[3], std_err_11[3], std_err_12[3],
+                                 std_err_13[3],
+                                 std_err_14[3], std_err_15[3], std_err_16[3],
+                                 std_err_17[3], std_err_18[3], std_err_19[3]))
               
 
 
@@ -300,10 +304,10 @@ ggplot(data,aes(x=seasons,y=distance_c))+
        x = "Season",
        y = "Shot Distance Coefficient")+
   scale_x_continuous(breaks = c(2010:2019))+
-  #geom_errorbar(aes(ymin = distance_c - 2 * std_data,
-                   # ymax = distance_c + 2 * std_data,
-                    #color = "red",
-                    #width = 0.5)) +
+  geom_errorbar(aes(ymin = distance_c - 2 * std_error,
+                    ymax = distance_c + 2 * std_error,
+                    color = "red",
+                    width = 0.5)) +
   theme_bw()+
   theme(axis.title.x = element_text(size=16),
         axis.title.y = element_text(size=16),
@@ -317,8 +321,56 @@ ggplot(data,aes(x=seasons,y=angle_c))+
        x = "Season",
        y = "Shot Angle Coefficient")+
   scale_x_continuous(breaks = c(2010:2019)) +
+  geom_errorbar(aes(ymin = angle_c - 2 * std_error,
+                    ymax = angle_c + 2 * std_error,
+                    color = "red",
+                    width = 0.5)) +
   theme_bw()+
   theme(axis.title.x = element_text(size=16),
         axis.title.y = element_text(size=16),
         plot.title = element_text(size = 20,face = "bold"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#set.seed(0)
+#library(boot)
+
+#define function to calculate fitted regression coefficients
+#coef_function <- function(formula, data, indices) {
+ # d <- data[indices,] #allows boot to select sample
+  #fit <- glm(goal~ shotAngleAdjusted + arenaAdjustedShotDistance, data=d, family = "binomial") #fit regression model
+  #return(coef(fit)) #return coefficient estimates of model
+#}
+
+#perform bootstrapping with 200 replications
+#reps_2010 <- boot(data=shots_10, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2011 <- boot(data=shots_11, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2012 <- boot(data=shots_12, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2013 <- boot(data=shots_13, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2014 <- boot(data=shots_14, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2015 <- boot(data=shots_15, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2016 <- boot(data=shots_16, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2017 <- boot(data=shots_17, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2018 <- boot(data=shots_18, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+#reps_2019 <- boot(data=shots_19, statistic=coef_function, R=200, formula=goal~ shotAngleAdjusted + arenaAdjustedShotDistance)
+
+
+
+#coef_function(fit)
+
+
+
 

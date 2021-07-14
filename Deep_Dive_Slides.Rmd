@@ -47,7 +47,7 @@ shots <- read_csv("shots_2020.csv")
 #shots2020 <- read_csv("shots_data/shots_2020.csv")
 #shots0719 <- read.csv("shots_data/shots_2007-2019.csv")
 
-shots <- read.csv("shots_2019.csv")
+#shots_19 <- read.csv("shots_2019.csv")
 
 
 
@@ -77,7 +77,7 @@ data <- shots %>%
            shotAngleAdjusted, shooterName, goalieNameForShot)
 library(knitr)
 library(kableExtra)
-kable(head(data), caption = "2019 Shots Data")
+kable(head(data), caption = "2020 Shots Data")
 ```
 
 
@@ -159,27 +159,33 @@ kable(head(data), caption = "2019 Shots Data")
 
 - Method of resampling with replacement
 - Comparing bootstrap sample coefficient trends to model trends
+- Limit uncertainty for coefficient trends over time
 
 ---
 ## Bootstrap Distance Coefficient Trends From 2010-2019
 
-![](Bootstrap Distance Trend.png)
+![](Shot Distance Boot.png)
 ---
 
 BootStrap Angle Coefficient Trends From 2010-2019
 
-![](Bootstrap Angle Trend.png)
+![](Shot Angle Boot.png)
 
 
 
 ---
 ## Discussion
 
-- Recap main points
+- Looked at how well calibrated MoneyPuck's xGoals model is for different conditions
 
 - Limitations
+--
+  -Data invloves shortened seasons (ie 2012-13, 2019-20, 2020-21)
 
-- Next steps
+
+- What's next
+--
+ - Adding player age and goalie as predictor variables to our model
 
 
 
