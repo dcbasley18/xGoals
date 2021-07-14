@@ -97,6 +97,7 @@ kable(head(data), caption = "2020 Shots Data")
 
 
 
+
 ---
 
 ## Rink Calibration (Chicago)
@@ -178,6 +179,8 @@ BootStrap Angle Coefficient Trends From 2010-2019
 
 - Looked at how well calibrated MoneyPuck's xGoals model is for different conditions
 
+- Looked at coefficient trends over the past 10 seasons
+
 - Limitations
 --
   -Data invloves shortened seasons (ie 2012-13, 2019-20, 2020-21)
@@ -185,7 +188,7 @@ BootStrap Angle Coefficient Trends From 2010-2019
 
 - What's next
 --
- - Adding player age and goalie as predictor variables to our model
+ - Adding player age and goalie age as predictor variables to our model
 
 
 
