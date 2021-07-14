@@ -60,17 +60,8 @@ shots <- read.csv("shots_2019.csv")
   - Assessing accuracy of MoneyPuck expected goals model
   
   - How well can shot angle and shot distance predict goals
-  
-<<<<<<< HEAD
-  - What effect does distance and angle have on the xGoals model change over time?
-=======
+
   - Does the effect distance and angle have on the xGoals model change over time?
->>>>>>> dc05603669467a3081ca50aeff313824c6be7982
-
-
-
-
-
 
 ---
 
@@ -79,7 +70,7 @@ shots <- read.csv("shots_2019.csv")
   - Using shot data from MoneyPuck
   
   - Variables of interest are shot angle and shot distance
-<<<<<<< HEAD
+
 ```{r echo=FALSE, fig.align='center', out.width= "10%", out.height="10%" }
 data <- shots %>%
     select(season, homeTeamCode, awayTeamCode, goal, arenaAdjustedShotDistance,
@@ -88,21 +79,8 @@ library(knitr)
 library(kableExtra)
 kable(head(data), caption = "2019 Shots Data")
 ```
-=======
-  
-```{r echo=FALSE}
 
-data <- shots %>%
-    select(season, homeTeamCode, awayTeamCode, goal, arenaAdjustedShotDistance,
-           shotAngleAdjusted, shooterName, goalieNameForShot)
 
-library(knitr)
-library(kableExtra)
->>>>>>> dc05603669467a3081ca50aeff313824c6be7982
-
-kable(head(data), caption = "2020 Shots Data")
-
-```
 ---
 ## Moneypuck xGoals Calibration
 
@@ -157,13 +135,9 @@ kable(head(data), caption = "2020 Shots Data")
 ## Shot Distance Trends with Error Bars From 2010-2020
 
 ![](shot distance trends.png)
-<<<<<<< HEAD
-=======
-![](distance trends 5 on 5.png)
-
->>>>>>> dc05603669467a3081ca50aeff313824c6be7982
 
 ---
+
 
 ## Shot Distance Trends 5 on 5 with Error Bars from 2010-2020
 
@@ -195,29 +169,13 @@ kable(head(data), caption = "2020 Shots Data")
 BootStrap Angle Coefficient Trends From 2010-2019
 
 ![](Bootstrap Angle Trend.png)
----
-## Discussion
-
-- Recap main points
-
-- Limitations
-
-<<<<<<< HEAD
-- Next steps
-=======
-![](angle trends 5 on 5.png)
 
 
----
-## Bootstrapping
-
-- Brief description of methodology and why we wanted to use bootstrapping
 
 ---
 ## Discussion
 
 - Recap main points
->>>>>>> dc05603669467a3081ca50aeff313824c6be7982
 
 - Limitations
 
