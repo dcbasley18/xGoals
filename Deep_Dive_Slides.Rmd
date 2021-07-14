@@ -1,0 +1,238 @@
+---
+title: "Deep Dive Into xGoal Models"
+
+author: 
+  - "Devin Basley and Sara Armstrong" 
+date: 'July 15th, 2021'
+output: 
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+    fig.retina = 3,
+    out.width = "100%",
+    cache = FALSE,
+    echo = FALSE,
+    message = FALSE,
+    warning = FALSE,
+    fig.show = TRUE,
+    hiline = TRUE)
+```
+
+```{r xaringan-themer, include = FALSE, warning = FALSE}
+library(xaringanthemer)
+style_mono_accent(base_color = "#808080",
+  white_color = "#FFFFFF",
+  background_color = "#fff7e6",
+  base_font_size = "24px"
+)
+```
+
+
+
+
+
+
+```{r include = FALSE, warning = FALSE}
+# for setting up data
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(data.table)
+
+shots <- read_csv("shots_2020.csv")
+#shots2020 <- read_csv("shots_data/shots_2020.csv")
+#shots0719 <- read.csv("shots_data/shots_2007-2019.csv")
+
+shots <- read.csv("shots_2019.csv")
+
+
+
+
+```
+
+
+## Problems
+
+  - Assessing accuracy of MoneyPuck expected goals model
+  
+  - How well can shot angle and shot distance predict goals
+  
+<<<<<<< HEAD
+  - What effect does distance and angle have on the xGoals model change over time?
+=======
+  - Does the effect distance and angle have on the xGoals model change over time?
+>>>>>>> dc05603669467a3081ca50aeff313824c6be7982
+
+
+
+
+
+
+---
+
+## Data
+
+  - Using shot data from MoneyPuck
+  
+  - Variables of interest are shot angle and shot distance
+<<<<<<< HEAD
+```{r echo=FALSE, fig.align='center', out.width= "10%", out.height="10%" }
+data <- shots %>%
+    select(season, homeTeamCode, awayTeamCode, goal, arenaAdjustedShotDistance,
+           shotAngleAdjusted, shooterName, goalieNameForShot)
+library(knitr)
+library(kableExtra)
+kable(head(data), caption = "2019 Shots Data")
+```
+=======
+  
+```{r echo=FALSE}
+
+data <- shots %>%
+    select(season, homeTeamCode, awayTeamCode, goal, arenaAdjustedShotDistance,
+           shotAngleAdjusted, shooterName, goalieNameForShot)
+
+library(knitr)
+library(kableExtra)
+>>>>>>> dc05603669467a3081ca50aeff313824c6be7982
+
+kable(head(data), caption = "2020 Shots Data")
+
+```
+---
+## Moneypuck xGoals Calibration
+
+![](MoneyPuck xGoals Calibrate.png)
+
+
+
+
+---
+
+## Rink Cablibration (Detroit)
+
+![](Det Calibration.png)
+
+
+
+---
+
+## Rink Calibration (Chicago)
+
+![](CHI_Calibrate.png)
+
+---
+
+## Rink Calibration (Vegas)
+
+![](VGK_Calibrate.png)
+
+
+
+---
+
+## Even Strength Calibration
+
+![](Even Strength Calibrate.png)
+---
+
+## Powerplay Calibration
+
+
+![](PowerPlay Calibrate.png)
+
+---
+
+## Penalty Kill Calbration
+
+![](Penaltykill Calibrate.png)
+
+
+---
+
+## Shot Distance Trends with Error Bars From 2010-2020
+
+![](shot distance trends.png)
+<<<<<<< HEAD
+=======
+![](distance trends 5 on 5.png)
+
+>>>>>>> dc05603669467a3081ca50aeff313824c6be7982
+
+---
+
+## Shot Distance Trends 5 on 5 with Error Bars from 2010-2020
+
+![](distance trends 5 on 5.png)
+
+---
+
+
+## Shot Angle Trends From 2010-2020 with Error Bars
+
+![](shot angle trends.png)
+---
+## Shot Angle Trends 5 on 5 From 2010-2020
+![](angle trends 5 on 5.png)
+
+
+---
+## Bootstrapping
+
+- Method of resampling with replacement
+- Comparing bootstrap sample coefficient trends to model trends
+
+---
+## Bootstrap Distance Coefficient Trends From 2010-2019
+
+![](Bootstrap Distance Trend.png)
+---
+
+BootStrap Angle Coefficient Trends From 2010-2019
+
+![](Bootstrap Angle Trend.png)
+---
+## Discussion
+
+- Recap main points
+
+- Limitations
+
+<<<<<<< HEAD
+- Next steps
+=======
+![](angle trends 5 on 5.png)
+
+
+---
+## Bootstrapping
+
+- Brief description of methodology and why we wanted to use bootstrapping
+
+---
+## Discussion
+
+- Recap main points
+>>>>>>> dc05603669467a3081ca50aeff313824c6be7982
+
+- Limitations
+
+- Next steps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
